@@ -1,0 +1,44 @@
+﻿@model UserLoginRegister.Models.User
+
+<h2>Profilimi Düzenle</h2>
+
+<form method="post" enctype="multipart/form-data" style="max-width:650px;">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="text-center mb-3">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" width="120" height="120" style="border-radius:50%; object-fit:cover;" />
+                }
+                else
+                {
+                    <img src="/images/default-user.png" width="120" height="120" style="border-radius:50%; opacity:0.5;" />
+                }
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Yeni Profil Resmi</label>
+                <input type="file" name="newImage" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Ad Soyad</label>
+                <input type="text" name="FullName" class="form-control" value="@Model.FullName" required />
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Email</label>
+                <input type="email" name="Email" class="form-control" value="@Model.Email" required />
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Yeni Şifre (Opsiyonel)</label>
+                <input type="password" name="newPassword" class="form-control" placeholder="Yeni şifre gir" />
+            </div>
+
+            <button class="btn btn-success">Kaydet</button>
+            <a href="/Account/Profile" class="btn btn-secondary">İptal</a>
+        </div>
+    </div>
+</form>

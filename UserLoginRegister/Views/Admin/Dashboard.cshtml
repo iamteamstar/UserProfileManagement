@@ -1,0 +1,93 @@
+﻿@model UserLoginRegister.Models.ViewModels.AdminDashboard
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row mb-4">
+
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Toplam Kullanıcı</h5>
+                <h2>@Model.TotalUsers</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Aktif Kullanıcı</h5>
+                <h2>@Model.ActiveUsers</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Pasif Kullanıcı</h5>
+                <h2>@Model.PassiveUsers</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Admin Sayısı</h5>
+                <h2>@Model.AdminCount</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<h4>Son Kayıt Olan 5 Kullanıcı</h4>
+
+<table class="table table-striped mb-5">
+    <thead>
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Email</th>
+            <th>Kayıt Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model.LastUsers)
+        {
+            <tr>
+                <td>@u.FullName</td>
+                <td>@u.Email</td>
+                <td>@u.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Son 7 Gün Kayıt Grafiği</h4>
+
+<canvas id="registerChart"></canvas>
+
+@section Scripts {
+    <script>
+        var labels = @Json.Serialize(Model.Last7DaysStats.Select(x => x.Date));
+        var data = @Json.Serialize(Model.Last7DaysStats.Select(x => x.Count));
+
+        new Chart(document.getElementById('registerChart'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Kayıt Sayısı",
+                    data: data,
+                    backgroundColor: '#3a86ff'
+                }]
+            }
+        });
+    </script>
+
+}
