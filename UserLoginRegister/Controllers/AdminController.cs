@@ -29,6 +29,9 @@ namespace UserLoginRegister.Controllers
             model.PassiveUsers = await _context.Users.Where(u => !u.IsActive).CountAsync();
             model.AdminCount = await _context.Users.Where(u => u.Role == "Admin").CountAsync();
 
+            model.AdminRoleCount = await _context.Users.CountAsync(u => u.Role == "Admin");
+            model.UserRoleCount = await _context.Users.CountAsync(u => u.Role == "User");
+
             model.LastUsers = await _context.Users
                 .OrderByDescending(u => u.CreatedAt)
                 .Take(5)

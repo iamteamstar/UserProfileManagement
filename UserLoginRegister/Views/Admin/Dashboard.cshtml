@@ -6,6 +6,7 @@
 
 <h2 class="mb-4">Admin Dashboard</h2>
 
+<!-- Özet Kartlar -->
 <div class="row mb-4">
 
     <div class="col-md-3">
@@ -46,6 +47,7 @@
 
 </div>
 
+<!-- Son 5 Kullanıcı -->
 <h4>Son Kayıt Olan 5 Kullanıcı</h4>
 
 <table class="table table-striped mb-5">
@@ -68,26 +70,88 @@
     </tbody>
 </table>
 
-<h4>Son 7 Gün Kayıt Grafiği</h4>
+<hr />
 
-<canvas id="registerChart"></canvas>
+<h3 class="mt-4 mb-3"> İstatistik Grafikler</h3>
+
+<div class="row">
+
+    <!-- PIE CHART -->
+    <div class="col-md-4 mb-4">
+        <h5 class="text-center">Rol Dağılımı</h5>
+        <canvas id="roleChart"></canvas>
+    </div>
+
+    <!-- BAR CHART -->
+    <div class="col-md-4 mb-4">
+        <h5 class="text-center">Aktif / Pasif Kullanıcılar</h5>
+        <canvas id="statusChart"></canvas>
+    </div>
+
+    <!-- LINE CHART -->
+    <div class="col-md-4 mb-4">
+        <h5 class="text-center">Son 7 Gün Kayıt Grafiği</h5>
+        <canvas id="registerChart"></canvas>
+    </div>
+
+</div>
 
 @section Scripts {
-    <script>
-        var labels = @Json.Serialize(Model.Last7DaysStats.Select(x => x.Date));
-        var data = @Json.Serialize(Model.Last7DaysStats.Select(x => x.Count));
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        new Chart(document.getElementById('registerChart'), {
-            type: 'bar',
+    <script>
+
+        
+        new Chart(document.getElementById('roleChart'), {
+            type: 'pie',
             data: {
-                labels: labels,
+                labels: ['Admin', 'User'],
                 datasets: [{
-                    label: "Kayıt Sayısı",
-                    data: data,
-                    backgroundColor: '#3a86ff'
+                    data: [@Model.AdminRoleCount, @Model.UserRoleCount],
+                    backgroundColor: ['#ff6384', '#36a2eb']
                 }]
             }
         });
-    </script>
 
+
+       
+        new Chart(document.getElementById('statusChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Aktif', 'Pasif'],
+                datasets: [{
+                    label: 'Kullanıcı Sayısı',
+                    data: [@Model.ActiveUsers, @Model.PassiveUsers],
+                    backgroundColor: ['#28a745', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+
+        // ---------------- LINE CHART (SON 7 GÜN) ----------------
+        var labels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Last7DaysStats.Select(x => x.Date)));
+        var data = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Last7DaysStats.Select(x => x.Count)));
+
+        new Chart(document.getElementById('registerChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Kayıt Sayısı',
+                    data: data,
+                    borderColor: '#3a86ff',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.3
+                }]
+            }
+        });
+
+    </script>
 }
