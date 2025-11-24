@@ -203,5 +203,36 @@ public class AccountControllerTests
         Assert.True(!controller.ModelState.IsValid); // Hata bekleniyor
     }
 
+    [Fact]
+    public void Login_UserNotFound_ReturnsViewWithError()
+    {
+        // Arrange
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase("LoginUserNotFoundDb")
+            .Options;
+
+        var context = new AppDbContext(options);
+        var env = new FakeWebHostEnvironment();
+
+        // DB’ye hiç kullanıcı eklemiyoruz → kullanıcı bulunamayacak
+
+        var controller = new AccountController(context, env);
+        controller.DisableSignIn = true; // Cookie engelle
+
+        var model = new UserLoginRegister.Models.ViewModels.Login
+        {
+            Email = "notfound@example.com",
+            Password = "AnyPassword123",
+            RememberMe = false
+        };
+
+        // Act
+        var result = controller.Login(model).Result;
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.IsType<Microsoft.AspNetCore.Mvc.ViewResult>(result);
+        Assert.False(controller.ModelState.IsValid); // hata bekleniyor
+    }
 
 }
