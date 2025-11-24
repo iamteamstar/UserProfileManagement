@@ -161,6 +161,7 @@ Test projesi tamamen izole çalışır, gerçek veritabanına dokunmaz.
 | admintest@example.com | Password1+ | Admin |
 
 (Projede ilk çalıştırmada otomatik oluşturulmuş olabilir ya da manuel eklenir.)
+<img width="1919" height="700" alt="image" src="https://github.com/user-attachments/assets/34da863b-5b17-41ee-b498-afae3bb41285" />
 
 ---
 
