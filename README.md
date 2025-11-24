@@ -11,25 +11,25 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 > Aşağıdaki bölümlere kendi ekran görüntülerini eklemelisin.
 
 ###  **Giriş Ekranı**
-👉 Buraya giriş ekranı görseli eklenecek  
+ Buraya giriş ekranı görseli eklenecek  
 **EKLE:**  
 `![Login Page](images/login.png)`
 
 
 ###  **Kayıt Ekranı**
-👉 Buraya kayıt ekranı görseli eklenecek  
+ Buraya kayıt ekranı görseli eklenecek  
 **EKLE:**  
 `![Register Page](images/register.png)`
 
 
 ###  **Kullanıcı Anasayfası**
-👉 Buraya kullanıcı için görünen ana sayfa eklenecek  
+ Buraya kullanıcı için görünen ana sayfa eklenecek  
 **EKLE:**  
 `![Home Page](images/home.png)`
 
 
 ###  **Admin Panel Dashboard**
-👉 Grafikli dashboard görüntüsü  
+ Grafikli dashboard görüntüsü  
 **EKLE:**  
 `![Admin Dashboard](images/admin-dashboard.png)`
 
@@ -60,9 +60,9 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 
 ---
 
-## 🛠️ Admin Paneli Özellikleri
+##  Admin Paneli Özellikleri
 
-### ✔ Kullanıcı Yönetimi
+###  Kullanıcı Yönetimi
 - Tüm kullanıcıları listeleme  
 - Rol bazlı filtreleme (Admin / User)  
 - Durum filtreleme (Aktif / Pasif)  
@@ -72,7 +72,7 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 - Profil fotoğrafı değiştirme  
 - Kullanıcı silme / pasif etme  
 
-### ✔ Admin Dashboard
+###  Admin Dashboard
 - Toplam kullanıcı sayısı  
 - Aktif kullanıcı sayısı  
 - Pasif kullanıcı sayısı  
@@ -102,7 +102,7 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 
 ---
 
-# 🗄️ Proje Dizini
+#  Proje Dizini
 
 UserLoginRegister
 │
@@ -155,6 +155,39 @@ Test projesi tamamen izole çalışır, gerçek veritabanına dokunmaz.
 ### 🔹 Login() Testleri
 - Yanlış email → Error
 - Yanlış parola → Error
+
+
+
+### 4. Admin girişi için varsayılan kullanıcı
+
+| Email | Şifre | Rol |
+|-------|-------|-----|
+| admin@example.com | 123456 | Admin |
+
+(Projede ilk çalıştırmada otomatik oluşturulmuş olabilir ya da manuel eklenir.)
+
+---
+
+#  Notlar
+
+- Unit testler tam izole çalışır, test veritabanı gerçek veritabanını etkilemez.  
+- Proje tamamen **Clean MVC Architecture** prensiplerine uygundur.
+
+---
+
+#  Lisans
+
+MIT License
+
+---
+
+#  Geliştirici
+
+**Azad Koçak**  
+Full Stack Developer  
+
+
+
 - Pasif kullanıcı → Error
 - Doğru bilgiler → Başarılı login
 
