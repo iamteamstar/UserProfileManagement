@@ -156,6 +156,52 @@ public class AccountControllerTests
         Assert.NotNull(result);
         Assert.IsType<Microsoft.AspNetCore.Mvc.RedirectToActionResult>(result);
     }
+    [Fact]
+    public void Login_InvalidPassword_ReturnsViewWithError()
+    {
+        // Arrange
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase("LoginWrongPasswordDb")
+            .Options;
+
+        var context = new AppDbContext(options);
+        var env = new FakeWebHostEnvironment();
+
+        // Şifre hash oluştur
+        var hasher = new Microsoft.AspNetCore.Identity.PasswordHasher<UserLoginRegister.Models.User>();
+
+        var user = new UserLoginRegister.Models.User
+        {
+            FullName = "Wrong PW User",
+            Email = "wrongpw@example.com",
+            Role = "User",
+            IsActive = true,
+            CreatedAt = DateTime.Now
+        };
+
+        user.Password = hasher.HashPassword(user, "CorrectPassword123!");
+
+        context.Users.Add(user);
+        context.SaveChanges();
+
+        var controller = new AccountController(context, env);
+        controller.DisableSignIn = true; // Cookie login devre dışı
+
+        var model = new UserLoginRegister.Models.ViewModels.Login
+        {
+            Email = "wrongpw@example.com",
+            Password = "WRONGPASSWORD!",
+            RememberMe = false
+        };
+
+        // Act
+        var result = controller.Login(model).Result;
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.IsType<Microsoft.AspNetCore.Mvc.ViewResult>(result);
+        Assert.True(!controller.ModelState.IsValid); // Hata bekleniyor
+    }
 
 
 }
