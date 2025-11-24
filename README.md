@@ -168,6 +168,7 @@ Test projesi tamamen izole çalışır, gerçek veritabanına dokunmaz.
 #Docker
 <img width="1915" height="913" alt="image" src="https://github.com/user-attachments/assets/36e88a30-02c2-44fa-bc8f-a8f34b2c9e0b" />
 <img width="1917" height="1007" alt="image" src="https://github.com/user-attachments/assets/4db45eb5-8254-470d-ba9f-c94ad9b9c0cc" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/61736aea-a74e-411b-b485-55d3c8ccc73a" />
 
 
 
