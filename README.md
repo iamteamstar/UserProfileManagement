@@ -104,3 +104,60 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 
 # 🗄️ Proje Dizini
 
+UserLoginRegister
+│
+├── Controllers
+│ ├── AccountController.cs
+│ ├── AdminController.cs
+│ └── HomeController.cs
+│
+├── Data
+│ └── AppDbContext.cs
+│
+├── Models
+│ ├── User.cs
+│ └── ViewModels/
+│
+├── Views
+│ ├── Account/
+│ ├── Admin/
+│ ├── Home/
+│ └── Shared/
+│
+├── UserLoginRegisterTests (XUnit)
+│ ├── AccountControllerTests.cs
+│ ├── FakeWebHostEnvironment.cs
+│ └── ...
+│
+└── wwwroot
+├── css
+├── js
+├── lib
+└── uploads/profiles/
+
+
+---
+
+# ✔ Birim Testleri (XUnit)
+
+Test projesi tamamen izole çalışır, gerçek veritabanına dokunmaz.  
+**Microsoft.EntityFrameworkCore.InMemory** kullanır.
+
+### Test Edilen Senaryolar
+
+### 🔹 Register() Testleri
+- Boş parola → Error
+- Boş email → Error
+- Geçersiz email → Error
+- Aynı email iki kez kayıt → Error
+- Doğru kayıt → Başarılı
+
+### 🔹 Login() Testleri
+- Yanlış email → Error
+- Yanlış parola → Error
+- Pasif kullanıcı → Error
+- Doğru bilgiler → Başarılı login
+
+Test sonucu örneği:
+
+7 Tests — 7 Passed — 0 Failed
