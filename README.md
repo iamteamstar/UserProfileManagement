@@ -33,13 +33,12 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 
 
 ###  **Kullanıcı Yönetimi Ekranı**
- Kullanıcı listeleme + arama + filtreleme görselleri  
-**EKLE:**  
-`![User Management](images/user-management.png)`
-
+ 
+ <img width="1919" height="821" alt="image" src="https://github.com/user-attachments/assets/643ff67b-4b2d-4346-91c2-e74a6f7da9d7" />
 
 ###  **Profil Düzenleme Ekranı**
- <img width="1919" height="821" alt="image" src="https://github.com/user-attachments/assets/643ff67b-4b2d-4346-91c2-e74a6f7da9d7" />
+
+<img width="1915" height="1008" alt="image" src="https://github.com/user-attachments/assets/bd7562fd-3d07-4486-9a65-7f05c7296a83" />
 
 
 ---
