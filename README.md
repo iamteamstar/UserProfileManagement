@@ -165,12 +165,85 @@ Test projesi tamamen izole çalışır, gerçek veritabanına dokunmaz.
 
 ---
 
-#Docker
+#Docker Kullanımı (Containerized Deployment)
+
+Bu proje tamamen containerize edilmiştir ve hem .NET 8 Web App hem de SQL Server 2022 Docker üzerinde birlikte çalışacak şekilde yapılandırılmıştır.
+
+Tüm container’lar docker-compose ile tek komutla ayağa kalkmaktadır.
+1. Gereksinimler
+
+Aşağıdaki yazılımların sistemde kurulu olması gerekir:
+
+Docker Desktop
+
+.NET 8 SDK (Sadece geliştirme için)
+
 <img width="1915" height="913" alt="image" src="https://github.com/user-attachments/assets/36e88a30-02c2-44fa-bc8f-a8f34b2c9e0b" />
 <img width="1917" height="1007" alt="image" src="https://github.com/user-attachments/assets/4db45eb5-8254-470d-ba9f-c94ad9b9c0cc" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/61736aea-a74e-411b-b485-55d3c8ccc73a" />
 
 
+2.Proje Yapısı
+
+Projenin kök dizininde aşağıdaki dosyalar bulunur:
+
+UserLoginRegister/
+│
+├── Dockerfile
+├── docker-compose.yml
+├── UserLoginRegister/        → Web uygulaması
+└── UserLoginRegisterTests/   → Unit testler
+
+3.SQL Server + Web App’i Birlikte Çalıştırma
+
+Projeyi tek komutla çalıştırabilirsiniz:
+
+docker compose up --build -d
+| Servis                     | Açıklama                        |
+| -------------------------- | ------------------------------- |
+| **userlogin_sql**          | SQL Server 2022 container’ı     |
+| **userlogin_web**          | .NET 8 Web uygulaması           |
+| **userloginapp_container** | (Önceki build’lerden gelebilir) |
+
+4.Uygulama Erişimi
+
+Web uygulaması şu adresten çalışır:
+
+ http://localhost:5005
+
+5.Docker İçin Connection String
+
+appsettings.json içinde local connection string yerine docker için:
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=sqlserver;Database=UserLoginRegisterDb;User Id=sa;Password=StrongPassword123!;TrustServerCertificate=True;"
+}
+
+6.SQL Server Container İçine Bağlanma
+
+Container terminaline gir:
+
+docker exec -it userlogin_sql bash
+
+SQL’e bağlan:
+
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P StrongPassword123!
+
+Veritabanı Oluşturma (Docker İçinde)
+
+SQL terminali açıldıktan sonra:
+
+CREATE DATABASE UserLoginRegisterDb;
+GO
+
+7. Migration Uygulama
+
+Migration’ları host makinede çalıştırabilirsiniz:
+
+cd UserLoginRegister/UserLoginRegister
+dotnet ef database update
+
+8.Tüm Servisleri Durdurmak
+docker compose down
 
 #  Notlar
 
