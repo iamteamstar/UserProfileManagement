@@ -162,7 +162,7 @@ Test projesi tamamen izole çalışır, gerçek veritabanına dokunmaz.
 
 | Email | Şifre | Rol |
 |-------|-------|-----|
-| admin@example.com | 123456 | Admin |
+| admintest@example.com | Password1+ | Admin |
 
 (Projede ilk çalıştırmada otomatik oluşturulmuş olabilir ya da manuel eklenir.)
 
