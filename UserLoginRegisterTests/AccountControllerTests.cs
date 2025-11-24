@@ -234,5 +234,47 @@ public class AccountControllerTests
         Assert.IsType<Microsoft.AspNetCore.Mvc.ViewResult>(result);
         Assert.False(controller.ModelState.IsValid); // hata bekleniyor
     }
+    [Fact]
+    public void Login_PassiveUser_ReturnsViewWithError()
+    {
+        // Arrange
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase("LoginPassiveUserDb")
+            .Options;
+
+        var context = new AppDbContext(options);
+        var env = new FakeWebHostEnvironment();
+
+        // Pasif kullanıcı oluştur
+        context.Users.Add(new UserLoginRegister.Models.User
+        {
+            FullName = "Passive User",
+            Email = "passive@example.com",
+            Password = "123456", // plain text çünkü test için
+            Role = "User",
+            IsActive = false,    // ❌ ÖNEMLİ
+            CreatedAt = DateTime.Now
+        });
+
+        context.SaveChanges();
+
+        var controller = new AccountController(context, env);
+        controller.DisableSignIn = true; // cookie'yi engelle
+
+        var model = new UserLoginRegister.Models.ViewModels.Login
+        {
+            Email = "passive@example.com",
+            Password = "123456",
+            RememberMe = false
+        };
+
+        // Act
+        var result = controller.Login(model).Result;
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.IsType<Microsoft.AspNetCore.Mvc.ViewResult>(result);
+        Assert.False(controller.ModelState.IsValid);  // pasif kullanıcı hata vermeli
+    }
 
 }
