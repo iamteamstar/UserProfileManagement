@@ -1,8 +1,38 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <link rel="stylesheet" href="~/css/HomeDesign/Index.css"/>
+</head>
+<div class="home-container">
+    <div class="home-content">
+        <h1 class="welcome-title">Welcome</h1>
+        <p class="welcome-subtitle">
+            Kullanıcı yönetim sistemine hoş geldiniz. Güvenli ve modern bir deneyim için hazırız.
+        </p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <div class="feature-title">Güvenli Giriş</div>
+                <div class="feature-description">Gelişmiş güvenlik protokolleri ile korunan hesaplar</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👤</div>
+                <div class="feature-title">Profil Yönetimi</div>
+                <div class="feature-description">Kişisel bilgilerinizi kolayca düzenleyin</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Hızlı & Kolay</div>
+                <div class="feature-description">Modern ve kullanıcı dostu arayüz</div>
+            </div>
+        </div>
+
+        <a href="https://learn.microsoft.com/aspnet/core" class="cta-button" target="_blank">
+            ASP.NET Core Hakkında Daha Fazla
+        </a>
+    </div>
 </div>
