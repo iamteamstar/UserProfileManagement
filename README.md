@@ -11,9 +11,8 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 > Aşağıdaki bölümlere kendi ekran görüntülerini eklemelisin.
 
 ###  **Giriş Ekranı**
- Buraya giriş ekranı görseli eklenecek  
-**EKLE:**  
-`![Login Page](images/login.png)`
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c602eb4c-97ed-4c85-bb54-d25c55d76684" />
+
 
 
 ###  **Kayıt Ekranı**
