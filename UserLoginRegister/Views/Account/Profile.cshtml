@@ -1,22 +1,24 @@
 ﻿@model UserLoginRegister.Models.User
 
-<h2>Profilim</h2>
+<head>
+    <link rel="stylesheet" href="~/css/AccountDesign/Profile.css"/>
+</head>
 
-<div class="card" style="max-width:600px;">
-    <div class="card-body">
 
-        <div class="text-center mb-3">
+<div class="profile-container">
+    <div class="profile-card">
+     
+        <div class="profile-image-container">
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
-                <img src="@Model.ImageUrl" width="120" height="120" style="border-radius:50%; object-fit:cover;" />
+                <img src="@Model.ImageUrl" alt="Profil Resmi" />
             }
             else
             {
-                <img src="/images/default-user.png" width="120" height="120" style="border-radius:50%; opacity:0.5;" />
+                <img src="/images/default-user.png" alt="Varsayılan Profil Resmi" />
             }
         </div>
-
-        <table class="table">
+        <table class="profile-table">
             <tr>
                 <th>Ad Soyad</th>
                 <td>@Model.FullName</td>
@@ -26,7 +28,6 @@
                 <td>@Model.Email</td>
             </tr>
         </table>
-
         <a class="btn btn-primary" href="/Account/EditProfile">Profili Düzenle</a>
     </div>
 </div>
