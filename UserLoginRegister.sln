@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36616.10 d17.14
+VisualStudioVersion = 17.14.36616.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLoginRegister", "UserLoginRegister\UserLoginRegister.csproj", "{4DFFF671-44C7-499C-BF75-CAFBAAFED32A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLoginRegisterTests", "UserLoginRegisterTests\UserLoginRegisterTests.csproj", "{0EC3FF48-3D47-4795-B873-FEB696FE7893}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4DFFF671-44C7-499C-BF75-CAFBAAFED32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFFF671-44C7-499C-BF75-CAFBAAFED32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFFF671-44C7-499C-BF75-CAFBAAFED32A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC3FF48-3D47-4795-B873-FEB696FE7893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC3FF48-3D47-4795-B873-FEB696FE7893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC3FF48-3D47-4795-B873-FEB696FE7893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC3FF48-3D47-4795-B873-FEB696FE7893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

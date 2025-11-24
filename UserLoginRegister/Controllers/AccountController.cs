@@ -16,6 +16,7 @@ namespace UserLoginRegister.Controllers
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
         private readonly PasswordHasher<User> _passwordHasher;
+        public bool DisableSignIn { get; set; } = false;
 
         public AccountController(AppDbContext context, IWebHostEnvironment env)
         {
@@ -130,6 +131,8 @@ namespace UserLoginRegister.Controllers
         }
         private async Task SignInUser(User user, bool rememberMe = false)
         {
+            if (DisableSignIn)
+                return; // Test modunda çalışmasın
             var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
