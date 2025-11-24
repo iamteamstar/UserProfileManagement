@@ -111,5 +111,51 @@ public class AccountControllerTests
         // DB’ye ikinci kayıt eklenmemiş olmalı
         Assert.Equal(1, context.Users.Count());
     }
+    [Fact]
+    public void Login_ValidCredentials_RedirectsToHome()
+    {
+        // Arrange
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseInMemoryDatabase("LoginSuccessDb")
+            .Options;
+
+        var context = new AppDbContext(options);
+        var env = new FakeWebHostEnvironment();
+
+        // Şifre hash'le
+        var hasher = new Microsoft.AspNetCore.Identity.PasswordHasher<UserLoginRegister.Models.User>();
+
+        var user = new UserLoginRegister.Models.User
+        {
+            FullName = "Login User",
+            Email = "login@example.com",
+            Role = "User",
+            IsActive = true,
+            CreatedAt = DateTime.Now
+        };
+
+        user.Password = hasher.HashPassword(user, "Password123!");
+
+        context.Users.Add(user);
+        context.SaveChanges();
+
+        var controller = new AccountController(context, env);
+        controller.DisableSignIn = true; // Cookie login testte devre dışı
+
+        var model = new UserLoginRegister.Models.ViewModels.Login
+        {
+            Email = "login@example.com",
+            Password = "Password123!",
+            RememberMe = false
+        };
+
+        // Act
+        var result = controller.Login(model).Result;
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.IsType<Microsoft.AspNetCore.Mvc.RedirectToActionResult>(result);
+    }
+
 
 }
