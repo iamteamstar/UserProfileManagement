@@ -8,7 +8,6 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 
 ##  Proje Ekran Görüntüleri
 
-> Aşağıdaki bölümlere kendi ekran görüntülerini eklemelisin.
 
 ###  **Giriş Ekranı**
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c602eb4c-97ed-4c85-bb54-d25c55d76684" />
