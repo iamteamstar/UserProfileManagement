@@ -11,27 +11,25 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 > Aşağıdaki bölümlere kendi ekran görüntülerini eklemelisin.
 
 ###  **Giriş Ekranı**
- Buraya giriş ekranı görseli eklenecek  
-**EKLE:**  
-`![Login Page](images/login.png)`
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c602eb4c-97ed-4c85-bb54-d25c55d76684" />
+
 
 
 ###  **Kayıt Ekranı**
- Buraya kayıt ekranı görseli eklenecek  
-**EKLE:**  
-`![Register Page](images/register.png)`
+<img width="1918" height="1019" alt="image" src="https://github.com/user-attachments/assets/af4780f2-460b-4baa-9fe5-e65548a570aa" />
+
 
 
 ###  **Kullanıcı Anasayfası**
- Buraya kullanıcı için görünen ana sayfa eklenecek  
-**EKLE:**  
-`![Home Page](images/home.png)`
+ <img width="1914" height="1018" alt="image" src="https://github.com/user-attachments/assets/312cc452-003a-42ca-b38c-ac5e6f7aefda" />
+
 
 
 ###  **Admin Panel Dashboard**
- Grafikli dashboard görüntüsü  
-**EKLE:**  
-`![Admin Dashboard](images/admin-dashboard.png)`
+<img width="1918" height="1018" alt="image" src="https://github.com/user-attachments/assets/9922ef4c-36ab-494e-a4c0-ae66f9544ebb" />
+<img width="1919" height="1017" alt="image" src="https://github.com/user-attachments/assets/24614840-32ef-41f1-819a-d52c04306e82" />
+
+
 
 
 ###  **Kullanıcı Yönetimi Ekranı**
@@ -41,9 +39,8 @@ Proje; kullanıcı kayıt/giriş işlemleri, admin kontrol paneli, kullanıcı f
 
 
 ###  **Profil Düzenleme Ekranı**
- Kullanıcı profilini düzenleme görseli  
-**EKLE:**  
-`![Edit Profile](images/edit-profile.png)`
+ <img width="1919" height="821" alt="image" src="https://github.com/user-attachments/assets/643ff67b-4b2d-4346-91c2-e74a6f7da9d7" />
+
 
 ---
 
@@ -156,6 +153,7 @@ Test projesi tamamen izole çalışır, gerçek veritabanına dokunmaz.
 - Yanlış email → Error
 - Yanlış parola → Error
 
+<img width="978" height="480" alt="image" src="https://github.com/user-attachments/assets/83c3b4e5-2894-4ebd-abd0-d9da7a7345b2" />
 
 
 ### 4. Admin girişi için varsayılan kullanıcı
